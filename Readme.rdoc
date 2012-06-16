@@ -1,0 +1,12 @@
+== Mass Assignable gem
+
+This gem serves a very simple purpose : allowing some roles to bypass the {mass assignment security}[http://api.rubyonrails.org/classes/ActiveModel/MassAssignmentSecurity/ClassMethods.html]
+
+Mass assignment protection is very important and this gem is not about disabling it (there is a config option in rails for that).
+
+This gem is about giving superpowers to some roles like 'system' or 'admin'.
+A 'system' role could be used to deserialize some objects from a redis database, an 'admin' role could be used for doing some management of records from a protected section of the app, ...
+
+I intend to use this gem on my own project and do the maintenance as far as I need it. This means that I'm very likely to work on bugs but less likely to work on features demands.
+
+This code is released under the Beer-ware License
