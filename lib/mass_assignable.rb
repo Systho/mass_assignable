@@ -38,7 +38,7 @@ end
 
 module MassAssignable
   class Railtie < Rails::Railtie
-    initializer "mass_assignable.hook_into_mass_assignment_security" do
+    initializer "mass_assignable.hook_into_mass_assignment_security", :after => "load_config_initializers" do
       ActiveModel::MassAssignmentSecurity.send(:include, MassAssignable)
     end
   end
