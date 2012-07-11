@@ -9,6 +9,7 @@ module MassAssignable
       class_eval do
         def self.inherited subclass
           super
+          ActiveRecord::Base.establish_connection if defined?(ActiveRecord)
           MassAssignable::Config.mass_assigners.each do |assigner|
             subclass.attr_protected assigner.to_sym
           end
