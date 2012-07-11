@@ -2,6 +2,8 @@ require 'active_support/concern'
 require 'active_model/mass_assignment_security'
 require 'mass_assignable'
 
+MassAssignable::Railtie.run_initializers
+
 class MassAssignmentProtected
   include ActiveModel::MassAssignmentSecurity
 end

@@ -1,5 +1,6 @@
 require 'active_support/concern'
 require 'active_model/mass_assignment_security'
+require 'rails/railtie'
 
 
 module MassAssignable
@@ -34,7 +35,16 @@ module MassAssignable::Config
 
 end
 
-ActiveModel::MassAssignmentSecurity.send(:include, MassAssignable)
+
+module MassAssignable
+  class Railtie < Rails::Railtie
+    initializer "mass_assignable.hook_into_mass_assignment_security" do
+      ActiveModel::MassAssignmentSecurity.send(:include, MassAssignable)
+    end
+  end
+end
+
+
 
 
 

@@ -4,7 +4,7 @@ require "mass_assignable"
 
 Gem::Specification.new do |s|
   s.name        = "mass_assignable"
-  s.version     = "0.0.3"
+  s.version     = "0.0.4"
   s.authors     = ["Systho"]
   s.email       = ["systho@gmail.com"]
   #s.homepage    = ""
@@ -25,6 +25,5 @@ Gem::Specification.new do |s|
   s.add_development_dependency "rake"
   s.add_development_dependency "rspec"
 
-  s.add_runtime_dependency "activemodel"
-  s.add_runtime_dependency "activesupport"
+  s.add_runtime_dependency "rails", ">= 3.2"
 end
