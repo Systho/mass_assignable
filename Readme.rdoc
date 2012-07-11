@@ -7,6 +7,20 @@ Mass assignment protection is very important and this gem is not about disabling
 This gem is about giving superpowers to some roles like 'system' or 'admin'.
 A 'system' role could be used to deserialize some objects from a redis database, an 'admin' role could be used for doing some management of records from a protected section of the app, ...
 
+= Usage Example with activeadmin
+
+    #config/initializers/mass_assignable.rb
+    MassAssignable::Config.configure do |c|
+      c.mass_assigners = %w(admin)
+    end
+
+    module ActiveAdmin
+      class BaseController
+        with_role :admin
+      end
+    end
+
+
 I intend to use this gem on my own project and do the maintenance as far as I need it. This means that I'm very likely to work on bugs but less likely to work on features demands.
 
 This code is released under the Beer-ware License
