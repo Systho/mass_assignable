@@ -1,5 +1,6 @@
-require 'active_model'
 require 'active_support/concern'
+require 'active_model/mass_assignment_security'
+
 
 module MassAssignable
   extend ActiveSupport::Concern
