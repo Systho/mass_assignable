@@ -50,6 +50,8 @@ end
 module MassAssignable
   class Railtie < Rails::Railtie
     initializer "mass_assignable.hook_into_mass_assignment_security", :after => "load_config_initializers" do
+
+      ActiveRecord::Base.establish_connection unless ActiveRecord::Base.connected?
       ActiveRecord::Base.send(:include, MassAssignable)
     end
   end

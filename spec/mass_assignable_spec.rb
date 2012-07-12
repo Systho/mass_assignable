@@ -2,11 +2,20 @@ require 'active_support/concern'
 require 'active_record'
 require 'mass_assignable'
 
-MassAssignable::Railtie.run_initializers
+
+
+
 
 
 
 describe MassAssignable do
+
+  before :each do
+    ActiveRecord::Base.stub(:connected?){true}
+    MassAssignable::Railtie.run_initializers
+  end
+
+
   it "should make all children of a class including ActiveModel::MassAssignmentSecurity call attr_protected" do
     ::ActiveRecord::Base.should_receive(:attr_protected)
     Class.new(::ActiveRecord::Base)
