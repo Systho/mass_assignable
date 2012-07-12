@@ -1,5 +1,4 @@
 require 'active_support/concern'
-require 'active_record'
 require 'mass_assignable/config'
 
 module MassAssignable
