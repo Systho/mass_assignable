@@ -2,6 +2,8 @@ require 'active_support/concern'
 require 'active_record'
 require 'rails/railtie'
 
+require 'active_record/railtie'
+
 
 module MassAssignable
   extend ActiveSupport::Concern
@@ -50,9 +52,9 @@ end
 module MassAssignable
   class Railtie < Rails::Railtie
     initializer "mass_assignable.hook_into_mass_assignment_security", :after => "finisher_hook " do
-
-      ActiveRecord::Base.establish_connection unless ActiveRecord::Base.connected?
-      ActiveRecord::Base.send(:include, MassAssignable)
+      ActiveSupport.on_load(:active_record) do
+        ActiveRecord::Base.send(:include, MassAssignable)
+      end
     end
   end
 end
