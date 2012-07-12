@@ -4,7 +4,7 @@ require "mass_assignable"
 
 Gem::Specification.new do |s|
   s.name        = "mass_assignable"
-  s.version     = "0.0.5"
+  s.version     = "0.1.0"
   s.authors     = ["Systho"]
   s.email       = ["systho@gmail.com"]
   #s.homepage    = ""

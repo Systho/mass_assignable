@@ -1,5 +1,5 @@
 require 'active_support/concern'
-require 'active_model/mass_assignment_security'
+require 'active_record'
 require 'rails/railtie'
 
 
@@ -10,14 +10,25 @@ module MassAssignable
       class_eval do
         def self.inherited subclass
           super
-          ActiveRecord::Base.establish_connection if defined?(ActiveRecord)
           MassAssignable::Config.mass_assigners.each do |assigner|
             subclass.attr_protected assigner.to_sym
           end
         end
       end
+      descendants.each do |klass|
+        klass.class_eval do
+          MassAssignable::Config.mass_assigners.each do |assigner|
+            attr_protected assigner.to_sym
+          end
+          def self.inherited subclass
+            super
+            MassAssignable::Config.mass_assigners.each do |assigner|
+              subclass.attr_protected assigner.to_sym
+            end
+          end
+        end
+      end
     end
-
 
 end
 
@@ -39,7 +50,7 @@ end
 module MassAssignable
   class Railtie < Rails::Railtie
     initializer "mass_assignable.hook_into_mass_assignment_security", :after => "load_config_initializers" do
-      ActiveModel::MassAssignmentSecurity.send(:include, MassAssignable)
+      ActiveRecord::Base.send(:include, MassAssignable)
     end
   end
 end
