@@ -12,8 +12,9 @@ module MassAssignable
           kls.send(:include, MassAssignable::ActiveRecordExtension)
           kls.class_eval do
             MassAssignable::Config.mass_assigners.each do |assigner|
-              attr_protected :as => assigner.to_sym
               attr_accessible
+              attr_protected :as => assigner.to_sym
+
             end
           end
 
@@ -27,8 +28,8 @@ module MassAssignable
         kls.send(:include, MassAssignable::ActiveRecordExtension)
         kls.class_eval do
           MassAssignable::Config.mass_assigners.each do |assigner|
-            attr_protected :as => assigner.to_sym
             attr_accessible
+            attr_protected :as => assigner.to_sym
           end
         end
       end
