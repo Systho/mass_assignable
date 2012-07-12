@@ -1,7 +1,7 @@
 require 'active_support/concern'
 require 'active_record'
 require 'mass_assignable'
-
+require 'mass_assignable/active_record_extension'
 
 
 
@@ -35,7 +35,7 @@ describe MassAssignable do
     parent = Class.new(base)
     child = Class.new(parent)
     grandchild = Class.new(child)
-    base.send(:include, ::MassAssignable)
+    base.send(:include, ::MassAssignable::ActiveRecordExtension)
   end
 
   it "should use admin as default role for mass assignment" do
