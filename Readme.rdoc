@@ -1,5 +1,7 @@
 == Mass Assignable gem
 
+WARNING : This gem has been much more difficult to build that I initialy thought. It doesn't work,  don't use it
+
 This gem serves a very simple purpose : allowing some roles to bypass the {mass assignment security}[http://api.rubyonrails.org/classes/ActiveModel/MassAssignmentSecurity/ClassMethods.html]
 
 Mass assignment protection is very important and this gem is not about disabling it (there is a config option in rails for that).
