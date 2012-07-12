@@ -13,6 +13,7 @@ module MassAssignable
           kls.class_eval do
             MassAssignable::Config.mass_assigners.each do |assigner|
               attr_protected :as => assigner.to_sym
+              attr_accessible
             end
           end
 
@@ -27,6 +28,7 @@ module MassAssignable
         kls.class_eval do
           MassAssignable::Config.mass_assigners.each do |assigner|
             attr_protected :as => assigner.to_sym
+            attr_accessible
           end
         end
       end
